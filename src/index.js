@@ -1,0 +1,3 @@
+const hello = () => 'test';
+
+hello();

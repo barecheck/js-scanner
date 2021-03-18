@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14.16.0
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.16.0
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: node_modules-v1-${{ hashFiles('yarn.lock') }}
+          # loading an older version is fine here, since it will get an npm install
+          restore-keys: |
+            node_modules-
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run linting checks
+        run: yarn lint
+
+      - name: Run formatting checks
+        run: yarn format-check
+
+      - name: Install dependencies
+        run: yarn test
