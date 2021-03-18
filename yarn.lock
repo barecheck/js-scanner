@@ -777,15 +777,16 @@ eslint-config-airbnb-base@^14.2.1:
     object.assign "^4.1.2"
     object.entries "^1.1.2"
 
-eslint-config-barecheck-base@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-barecheck-base/-/eslint-config-barecheck-base-0.3.0.tgz#408d8cc78e67ffe4326cde26d5f54158ec350e6d"
-  integrity sha512-GHNyyqBghlgxf4x+c653htF0znFg7AvAL/7eGTxMn/MAxvUqTa1fECx8hPsio6PRpNFCzw1MngXtdLe6yZRYhQ==
+eslint-config-barecheck-base@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-barecheck-base/-/eslint-config-barecheck-base-0.4.0.tgz#d107461ac65f87bbcc1ec9f854a93f301a62d3f6"
+  integrity sha512-f4Mnp+kZ6ceS9YkJNFqE9//Tv9PZtDQG7g6RZvuDBWIFtiMEFSf2g9h7OyeSIRjfj2TkZKzRTvr5cX2O6YhTwg==
   dependencies:
     eslint-config-airbnb-base "^14.2.1"
     eslint-config-prettier "^8.1.0"
     eslint-plugin-import "^2.22.1"
     eslint-plugin-prettier "^3.3.1"
+    eslint-plugin-simple-import-sort "^7.0.0"
 
 eslint-config-prettier@^8.1.0:
   version "8.1.0"
@@ -833,6 +834,11 @@ eslint-plugin-prettier@^3.3.1:
   integrity sha512-Rq3jkcFY8RYeQLgk2cCwuc0P7SEFwDravPhsJZOQ5N4YI4DSg50NyqJ/9gdZHzQlHf8MvafSesbNJCcP/FF6pQ==
   dependencies:
     prettier-linter-helpers "^1.0.0"
+
+eslint-plugin-simple-import-sort@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-simple-import-sort/-/eslint-plugin-simple-import-sort-7.0.0.tgz#a1dad262f46d2184a90095a60c66fef74727f0f8"
+  integrity sha512-U3vEDB5zhYPNfxT5TYR7u01dboFZp+HNpnGhkDB2g/2E4wZ/g1Q9Ton8UwCLfRV9yAKyYqDh62oHOamvkFxsvw==
 
 eslint-scope@^5.1.1:
   version "5.1.1"
