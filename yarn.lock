@@ -777,6 +777,11 @@ eslint-config-airbnb-base@^14.2.1:
     object.assign "^4.1.2"
     object.entries "^1.1.2"
 
+eslint-config-barecheck-base@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-barecheck-base/-/eslint-config-barecheck-base-0.1.0.tgz#514763a14fe5dff9f7fbbfa4be1e7d261b1ef8c4"
+  integrity sha512-v/kHKKnVAmf5ZGrMTXmXJ46WW/EXxkaXyW2DEuGp6gl1cex+SfPB/h9+2nAOf9PZR0DAGsBAmfi2mw+ySqk8PQ==
+
 eslint-config-prettier@^8.1.0:
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-8.1.0.tgz#4ef1eaf97afe5176e6a75ddfb57c335121abc5a6"
