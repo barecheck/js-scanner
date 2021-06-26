@@ -1,8 +1,11 @@
 {
-  "name": "js-scanner",
+  "name": "bcheck",
   "version": "0.1.0",
   "description": "JS code scanner to analyze code database",
   "main": "src/index.js",
+  "bin": {
+    "bcheck": "./bin/bcheck.js"
+  },
   "dependencies": {},
   "devDependencies": {
     "chai": "^4.3.4",
