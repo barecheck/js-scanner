@@ -9,7 +9,7 @@
   "dependencies": {},
   "devDependencies": {
     "chai": "^4.3.4",
-    "eslint": "^7.23.0",
+    "eslint": "^7.29.0",
     "eslint-config-barecheck-base": "^0.4.0",
     "mocha": "^9.0.1",
     "nyc": "^15.1.0",
