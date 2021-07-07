@@ -1,3 +1,3 @@
-# js-scanner
+# bcheck
 
-Javascript based static code analyzer
+Barecheck CLI tool to make static code analyses
