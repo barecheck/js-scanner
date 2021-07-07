@@ -33,6 +33,8 @@
     "code",
     "quality",
     "analyzis",
+    "code duplication",
+    "code coverage",
     "static code analizis",
     "CI"
   ],
