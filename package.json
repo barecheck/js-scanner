@@ -1,12 +1,14 @@
 {
   "name": "bcheck",
   "version": "0.1.0",
-  "description": "JS code scanner to analyze code database",
+  "description": "Barecheck CLI to run  static code analysis",
   "main": "src/index.js",
   "bin": {
-    "bcheck": "./bin/bcheck.js"
+    "bcheck": "./bcheck.js"
   },
-  "dependencies": {},
+  "dependencies": {
+    "commander": "^8.0.0"
+  },
   "devDependencies": {
     "chai": "^4.3.4",
     "eslint": "^7.30.0",
