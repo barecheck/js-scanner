@@ -25,7 +25,7 @@ const detectClones = async (path) => {
 
   const clones = await detector.detect(files);
 
-  return { statistic, clones };
+  return { statistic: statistic.statistic, clones };
 };
 
 module.exports = {
