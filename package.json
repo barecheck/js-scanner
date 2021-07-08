@@ -29,7 +29,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/barecheck/js-scanner.git"
+    "url": "git+https://github.com/barecheck/barecheck-cli.git"
   },
   "keywords": [
     "code",
@@ -43,7 +43,7 @@
   "author": "Barecheck",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/barecheck/js-scanner/issues"
+    "url": "https://github.com/barecheck/barecheck-cli/issues"
   },
-  "homepage": "https://github.com/barecheck/js-scanner#readme"
+  "homepage": "https://github.com/barecheck/barecheck-cli#readme"
 }
