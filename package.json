@@ -7,6 +7,9 @@
     "bcheck": "./bcheck.js"
   },
   "dependencies": {
+    "@jscpd/core": "^3.3.17",
+    "@jscpd/finder": "^3.3.26",
+    "@jscpd/tokenizer": "^3.3.24",
     "commander": "^8.0.0"
   },
   "devDependencies": {
