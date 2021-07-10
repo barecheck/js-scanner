@@ -6,6 +6,8 @@ const {
   stashApply
 } = require('../../services/git');
 
+const { success, error, warning, info } = require('../../services/output');
+
 const getStatisticFromBaseBranch = async (path, currentBranch, baseBranch) => {
   await stash();
 
@@ -18,23 +20,37 @@ const getStatisticFromBaseBranch = async (path, currentBranch, baseBranch) => {
   return statistic;
 };
 
-const reportResult = (statistic, baseBranchStatistic) => {
-  const duplicatedLinesDiff =
-    statistic.total.duplicatedLines - baseBranchStatistic.total.duplicatedLines;
+const decimal = (num, count) => (Math.round(num * 100) / 100).toFixed(count);
 
-  const duplicatedTokensDiff =
-    statistic.total.duplicatedTokens -
-    baseBranchStatistic.total.duplicatedTokens;
+const reportResult = (statistic, baseBranchStatistic, threshold) => {
+  const { percentage } = statistic.total;
+  const { percentage: baseBranchPercentage } = baseBranchStatistic.total;
 
-  const resultValue = (value) => `${value > 0 ? '+' : '-'}${value}`;
-  // eslint-disable-next-line no-console
-  console.log('duplicatedLines:', resultValue(duplicatedLinesDiff));
-  // eslint-disable-next-line no-console
-  console.log('duplicatedTokens:', resultValue(duplicatedTokensDiff));
+  const duplicatedLinesDiff = decimal(percentage - baseBranchPercentage, 2);
+
+  const resultValue = (value) => {
+    if (parseInt(value, 10) === 0) return value;
+
+    return `${value > 0 ? '+' : '-'}${value}`;
+  };
+
+  info(`duplicatedLines: ${resultValue(duplicatedLinesDiff)}%`);
+
+  if (duplicatedLinesDiff - threshold > 0) {
+    error('Percentage of duplicated lines is signifigtly increased!');
+  } else if (duplicatedLinesDiff > 0) {
+    warning('Percentage of duplicated lines is increased.');
+  } else if (duplicatedLinesDiff < 0) {
+    success('Percentage of duplicated lines is improved!');
+  } else {
+    success("Percentage of duplicated lines didn't change");
+  }
 };
 
 const duplicationChecksCommand = async (path) => {
   const baseBranch = 'master';
+  const threshold = 10;
+
   const currentBranch = await getCurrentBranch();
   const fullPath = `${process.cwd()}/${path}`;
 
@@ -46,10 +62,7 @@ const duplicationChecksCommand = async (path) => {
     baseBranch
   );
 
-  // eslint-disable-next-line no-console
-  console.log(`Running checks over ${fullPath} directory`);
-
-  reportResult(statistic, baseBranchStatistic);
+  reportResult(statistic, baseBranchStatistic, threshold);
 };
 
 module.exports = duplicationChecksCommand;

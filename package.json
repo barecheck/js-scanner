@@ -10,6 +10,7 @@
     "@jscpd/core": "^3.3.17",
     "@jscpd/finder": "^3.3.26",
     "@jscpd/tokenizer": "^3.3.24",
+    "chalk": "^4.1.1",
     "commander": "^8.0.0"
   },
   "devDependencies": {
