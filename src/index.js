@@ -1,3 +1,11 @@
-const hello = () => 'test';
+const { detectClones } = require('./services/jscpd');
 
-hello();
+const duplicates = {
+  detectClones
+};
+
+const barecheck = {
+  duplicates
+};
+
+module.exports = barecheck;
