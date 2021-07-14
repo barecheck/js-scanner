@@ -1,7 +1,7 @@
 {
-  "name": "bcheck",
+  "name": "@barecheck/scanner",
   "version": "0.1.0",
-  "description": "Barecheck CLI to run  static code analysis",
+  "description": "Barecheck scanner to run  static code analysis",
   "main": "src/index.js",
   "bin": {
     "bcheck": "./bcheck.js"
