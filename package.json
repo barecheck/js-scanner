@@ -1,6 +1,6 @@
 {
   "name": "@barecheck/scanner",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "Barecheck scanner to run  static code analysis",
   "main": "src/index.js",
   "bin": {
