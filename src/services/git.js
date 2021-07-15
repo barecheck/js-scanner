@@ -16,9 +16,16 @@ const stash = () => exec(`git stash`);
 
 const stashApply = () => exec(`git stash apply`);
 
+const diffFileNames = async (branch) => {
+  const { stdout: files } = await exec(`git diff --name-only ${branch}`);
+
+  return files.split('\n').filter((path) => path !== '');
+};
+
 module.exports = {
   checkoutToBranch,
   getCurrentBranch,
   stash,
-  stashApply
+  stashApply,
+  diffFileNames
 };

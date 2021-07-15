@@ -6,7 +6,7 @@ const buildTrendValue = (value) => {
   return `${value > 0 ? '+' : ''}${value}`;
 };
 
-const buildDetails = (clones) => {
+const buildDetails = (clones, changedFiles) => {
   const duplicatesTable = clones.reduce(
     (acc, { duplicationA, duplicationB }) => {
       const buildLine = (duplication) => {
@@ -16,14 +16,18 @@ const buildDetails = (clones) => {
 
         return `${path}:${startLine}-${endLine}`;
       };
-      const index = buildLine(duplicationB);
 
-      const defaultDuplicatedBlock = {
-        duplicates: []
-      };
-      const duplicatedBlock = acc[index] || defaultDuplicatedBlock;
-      duplicatedBlock.duplicates.push(buildLine(duplicationA));
-      acc[index] = duplicatedBlock;
+      // show report only with changed files
+      if (changedFiles.includes(duplicationB.sourceId)) {
+        const index = buildLine(duplicationB);
+        const defaultDuplicatedBlock = {
+          duplicates: []
+        };
+        const duplicatedBlock = acc[index] || defaultDuplicatedBlock;
+        duplicatedBlock.duplicates.push(buildLine(duplicationA));
+        acc[index] = duplicatedBlock;
+      }
+
       return acc;
     },
     {}
@@ -51,7 +55,8 @@ const buildFullMessage = ({
   tokensDiff,
   totalPercentage,
   totalTokens,
-  clones
+  clones,
+  changedFiles
 }) => {
   const body = buildBody({
     linesDiff,
@@ -59,7 +64,7 @@ const buildFullMessage = ({
     totalPercentage,
     totalTokens
   });
-  const details = buildDetails(clones);
+  const details = buildDetails(clones, changedFiles);
 
   info(body);
   if (Object.values(details).length > 0) table(details);

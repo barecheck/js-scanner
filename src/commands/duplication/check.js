@@ -3,7 +3,8 @@ const {
   getCurrentBranch,
   checkoutToBranch,
   stash,
-  stashApply
+  stashApply,
+  diffFileNames
 } = require('../../services/git');
 
 const {
@@ -25,7 +26,7 @@ const getStatisticFromBaseBranch = async (path, currentBranch, baseBranch) => {
 
 const decimal = (num, count) => (Math.round(num * 100) / 100).toFixed(count);
 
-const reportResult = (duplicates, baseBranchDuplicates) => {
+const reportResult = (duplicates, baseBranchDuplicates, changedFiles) => {
   const { percentage: linesPercentage, percentageTokens } =
     duplicates.statistic.total;
   const {
@@ -41,7 +42,8 @@ const reportResult = (duplicates, baseBranchDuplicates) => {
     tokensDiff,
     totalPercentage: linesPercentage,
     totalTokens: percentageTokens,
-    clones: duplicates.clones
+    clones: duplicates.clones,
+    changedFiles
   });
 };
 
@@ -49,6 +51,8 @@ const duplicationChecksCommand = async (path) => {
   const baseBranch = 'master';
 
   const currentBranch = await getCurrentBranch();
+
+  const changedFiles = await diffFileNames(baseBranch);
 
   const duplicates = await detectClones([path]);
 
@@ -58,7 +62,7 @@ const duplicationChecksCommand = async (path) => {
     baseBranch
   );
 
-  reportResult(duplicates, baseBranchDuplicates);
+  reportResult(duplicates, baseBranchDuplicates, changedFiles);
 };
 
 module.exports = duplicationChecksCommand;
