@@ -1,11 +1,11 @@
-const { detectClones } = require('../../services/jscpd');
+const { detectClones } = require('../../lib/jscpd');
 const {
   getCurrentBranch,
   checkoutToBranch,
   stash,
   stashApply,
   diffFileNames
-} = require('../../services/git');
+} = require('../../lib/git');
 
 const {
   reporterTypes,
