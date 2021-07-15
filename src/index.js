@@ -1,7 +1,7 @@
-const { detectClones } = require('./lib/jscpd');
+const getMetrics = require('./services/duplication/getMetrics');
 
 const duplicates = {
-  detectClones
+  getMetrics
 };
 
 const barecheck = {
