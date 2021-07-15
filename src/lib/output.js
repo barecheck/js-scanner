@@ -1,6 +1,6 @@
 const chalk = require('chalk');
 
-const { log } = console;
+const { log, table } = console;
 
 const theme = {
   success: chalk.bold.green,
@@ -14,7 +14,9 @@ const success = (message) => log(theme.success(message));
 const warning = (message) => log(theme.warning(message));
 
 module.exports = {
+  theme,
   info,
+  table,
   error,
   success,
   warning
