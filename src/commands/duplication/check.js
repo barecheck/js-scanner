@@ -47,9 +47,7 @@ const reportResult = (duplicates, baseBranchDuplicates, changedFiles) => {
   });
 };
 
-const duplicationChecksCommand = async (path) => {
-  const baseBranch = 'master';
-
+const duplicationChecksCommand = async (path, { baseBranch }) => {
   const currentBranch = await getCurrentBranch();
 
   const changedFiles = await diffFileNames(baseBranch);
