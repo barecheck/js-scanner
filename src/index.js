@@ -1,4 +1,4 @@
-const { detectClones } = require('./services/jscpd');
+const { detectClones } = require('./lib/jscpd');
 
 const duplicates = {
   detectClones
