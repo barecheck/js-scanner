@@ -38,14 +38,14 @@ const buildDetails = (clones, changedFiles) => {
 
 const buildBody = ({ linesDiff, tokensDiff, totalPercentage, totalTokens }) => {
   const trendLinesOutput = buildTrendValue(linesDiff);
-  const trendBranchesOutput = buildTrendValue(tokensDiff);
+  const trendTokensOutput = buildTrendValue(tokensDiff);
 
   const totalPercentageOutput = `Total: ${totalPercentage}%`;
-  const totalTokensOutput = `Total Branches: ${totalTokens}%`;
+  const totalTokensOutput = `Total tokens: ${totalTokens}%`;
 
   const deescriptionLines = `Percentage of duplicated lines diff: ${trendLinesOutput}`;
-  const deescriptionBranches = `Percentage of duplicated branches diff: ${trendBranchesOutput}`;
-  const body = `${totalPercentageOutput}\n${totalTokensOutput}\n\n${deescriptionLines}\n${deescriptionBranches}`;
+  const deescriptionTokens = `Percentage of duplicated tokens diff: ${trendTokensOutput}`;
+  const body = `${totalPercentageOutput}\n${totalTokensOutput}\n\n${deescriptionLines}\n${deescriptionTokens}`;
 
   return body;
 };
