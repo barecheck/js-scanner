@@ -14,13 +14,7 @@ const getStatisticFromBaseBranch = async (path, currentBranch, baseBranch) => {
   const duplicates = await detectClones(path);
   await checkoutToBranch(currentBranch);
 
-  try {
-    await stashApply();
-  } catch (err) {
-    // TODO: find better way of checking if apply exists
-    // eslint-disable-next-line no-console
-    console.error(err);
-  }
+  await stashApply();
 
   return duplicates;
 };

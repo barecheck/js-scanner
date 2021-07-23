@@ -4,6 +4,8 @@ const exec = promisify(require('child_process').exec);
 // TODO: have better approach of seitching between branches
 // Would be great to have covered cases where we have errors during checkout and we can easily rollback
 
+const stashMessage = 'barecheck branches comparision';
+
 const checkoutToBranch = async (branch) => exec(`git checkout ${branch}`);
 
 const getCurrentBranch = async () => {
@@ -12,9 +14,19 @@ const getCurrentBranch = async () => {
   return branch.trim();
 };
 
-const stash = () => exec(`git stash`);
+const stash = () => exec(`git stash push -m "${stashMessage}"`);
 
-const stashApply = () => exec(`git stash apply`);
+const stashApply = async () => {
+  const findStashCmd = `git stash list | grep "${stashMessage}"`;
+
+  const { stdout: stashCount } = await exec(`${findStashCmd} | wc -l`);
+
+  if (parseInt(stashCount, 10) !== 0) {
+    return exec(`git stash pop $(${findStashCmd} | cut -d: -f1)`);
+  }
+
+  return false;
+};
 
 const diffFileNames = async (branch) => {
   const { stdout: files } = await exec(`git diff --name-only ${branch}`);
