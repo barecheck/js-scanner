@@ -17,12 +17,12 @@ const getCurrentBranch = async () => {
 const stash = () => exec(`git stash push -m "${stashMessage}"`);
 
 const stashApply = async () => {
-  const { stdout: stashCount } = await exec('git stash list | wc -l');
+  const findStashCmd = `git stash list | grep "${stashMessage}"`;
+
+  const { stdout: stashCount } = await exec(`${findStashCmd} | wc -l`);
 
   if (parseInt(stashCount, 10) !== 0) {
-    return exec(
-      `git stash pop $(git stash list | grep "${stashMessage}" | cut -d: -f1)`
-    );
+    return exec(`git stash pop $(${findStashCmd} | cut -d: -f1)`);
   }
 
   return false;
